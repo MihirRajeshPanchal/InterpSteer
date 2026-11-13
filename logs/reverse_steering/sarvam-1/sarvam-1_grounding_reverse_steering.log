@@ -1,0 +1,909 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] The following generation flags are not valid and may be ignored: ['output_hidden_states']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+CUDA initialized: 2 device(s) available
+
+=================================================================
+Worst-Layer Activation Steering Experiment (REVERSED SV)
+Model:          /mnt/storage/deeksha/models/sarvamai/sarvam-1
+Analysis dir:   /mnt/storage/deeksha/interpsteer/sarvam-1/results
+Condition:      Multilingual
+Worst N layers: 5
+Steering alpha: 0.5
+Capability:     grounding
+Instr col:      translated_input
+Response col:   translated_orig_response
+Reference col:  translated_reference_answer
+System prompt:  Using 'translated_system_prompt' column from dataframe
+=================================================================
+
+Loading worst-performing layers from analysis...
+  Loading worst layers from CSV: /mnt/storage/deeksha/interpsteer/sarvam-1/results/bilingual_metrics.csv
+
+Worst layers per capability:
+  grounding                   : [25, 26, 27, 21, 24]
+
+Saved resolved worst layers → /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/grounding/resolved_worst_layers.json
+
+Loading dataset...
+Loaded 11562 samples. Columns: ['capability', 'task', 'system_prompt', 'input', 'reference_answer', 'score_rubric', 'orig_score', 'orig_response', 'orig_index', 'language', 'translated_system_prompt', 'translated_input', 'translated_reference_answer', 'translated_orig_response']
+Filtered to 2400 samples for: grounding
+Evaluation set: 50 samples
+Loading model: /mnt/storage/deeksha/models/sarvamai/sarvam-1
+Loading weights:   0%|          | 0/255 [00:00<?, ?it/s]Loading weights:   1%|          | 2/255 [00:00<00:14, 17.68it/s]Loading weights:   9%|▊         | 22/255 [00:00<00:02, 111.66it/s]Loading weights:  16%|█▌        | 41/255 [00:00<00:01, 142.75it/s]Loading weights:  23%|██▎       | 58/255 [00:00<00:01, 146.44it/s]Loading weights:  30%|███       | 77/255 [00:00<00:01, 151.86it/s]Loading weights:  37%|███▋      | 95/255 [00:00<00:01, 153.95it/s]Loading weights:  44%|████▍     | 112/255 [00:00<00:00, 154.05it/s]Loading weights:  55%|█████▍    | 140/255 [00:00<00:00, 187.34it/s]Loading weights:  62%|██████▏   | 159/255 [00:01<00:00, 180.91it/s]Loading weights:  72%|███████▏  | 183/255 [00:01<00:00, 195.71it/s]Loading weights:  80%|███████▉  | 203/255 [00:01<00:00, 161.56it/s]Loading weights:  87%|████████▋ | 221/255 [00:01<00:00, 154.65it/s]Loading weights:  97%|█████████▋| 247/255 [00:01<00:00, 162.79it/s]Loading weights: 100%|██████████| 255/255 [00:01<00:00, 163.47it/s]
+Model loaded. Layers: 28, Device: cuda:0
+
+Computing steering vectors for 'grounding' at layers: [25, 26, 27, 21, 24]
+    Layer 25: 0 high-score responses + 50 reference answers (positives) | 50 low-score responses (negatives)
+    L25 high-response: 0it [00:00, ?it/s]                                             L25 reference:   0%|          | 0/50 [00:00<?, ?it/s]    L25 reference:   2%|▏         | 1/50 [00:00<00:32,  1.53it/s]    L25 reference:   4%|▍         | 2/50 [00:00<00:18,  2.64it/s]    L25 reference:   6%|▌         | 3/50 [00:00<00:12,  3.64it/s]    L25 reference:  10%|█         | 5/50 [00:01<00:07,  5.72it/s]    L25 reference:  12%|█▏        | 6/50 [00:01<00:06,  6.45it/s]    L25 reference:  14%|█▍        | 7/50 [00:01<00:06,  7.05it/s]    L25 reference:  16%|█▌        | 8/50 [00:01<00:05,  7.36it/s]    L25 reference:  18%|█▊        | 9/50 [00:01<00:05,  7.85it/s]    L25 reference:  20%|██        | 10/50 [00:01<00:04,  8.08it/s]    L25 reference:  24%|██▍       | 12/50 [00:01<00:03,  9.82it/s]    L25 reference:  28%|██▊       | 14/50 [00:02<00:03, 11.42it/s]    L25 reference:  32%|███▏      | 16/50 [00:02<00:02, 12.59it/s]    L25 reference:  36%|███▌      | 18/50 [00:02<00:02, 12.98it/s]    L25 reference:  40%|████      | 20/50 [00:02<00:02, 13.23it/s]    L25 reference:  44%|████▍     | 22/50 [00:02<00:02, 13.59it/s]    L25 reference:  48%|████▊     | 24/50 [00:02<00:01, 14.81it/s]    L25 reference:  52%|█████▏    | 26/50 [00:02<00:01, 14.85it/s]    L25 reference:  56%|█████▌    | 28/50 [00:02<00:01, 14.32it/s]    L25 reference:  60%|██████    | 30/50 [00:03<00:01, 13.56it/s]    L25 reference:  64%|██████▍   | 32/50 [00:03<00:01, 11.99it/s]    L25 reference:  68%|██████▊   | 34/50 [00:03<00:01, 12.56it/s]    L25 reference:  72%|███████▏  | 36/50 [00:03<00:01, 12.98it/s]    L25 reference:  76%|███████▌  | 38/50 [00:03<00:00, 13.02it/s]    L25 reference:  80%|████████  | 40/50 [00:04<00:00, 11.63it/s]    L25 reference:  84%|████████▍ | 42/50 [00:04<00:00, 12.46it/s]    L25 reference:  88%|████████▊ | 44/50 [00:04<00:00, 13.31it/s]    L25 reference:  92%|█████████▏| 46/50 [00:04<00:00, 13.46it/s]    L25 reference:  96%|█████████▌| 48/50 [00:04<00:00, 12.57it/s]    L25 reference: 100%|██████████| 50/50 [00:04<00:00, 12.79it/s]                                                                      L25 low-response:   0%|          | 0/50 [00:00<?, ?it/s]    L25 low-response:   4%|▍         | 2/50 [00:00<00:03, 13.55it/s]    L25 low-response:   8%|▊         | 4/50 [00:00<00:03, 14.52it/s]    L25 low-response:  12%|█▏        | 6/50 [00:00<00:03, 14.50it/s]    L25 low-response:  16%|█▌        | 8/50 [00:00<00:02, 14.86it/s]    L25 low-response:  20%|██        | 10/50 [00:00<00:02, 15.31it/s]    L25 low-response:  24%|██▍       | 12/50 [00:00<00:02, 13.38it/s]    L25 low-response:  28%|██▊       | 14/50 [00:00<00:02, 14.19it/s]    L25 low-response:  32%|███▏      | 16/50 [00:01<00:02, 15.20it/s]    L25 low-response:  36%|███▌      | 18/50 [00:01<00:01, 16.01it/s]    L25 low-response:  40%|████      | 20/50 [00:02<00:06,  4.49it/s]    L25 low-response:  44%|████▍     | 22/50 [00:02<00:05,  5.51it/s]    L25 low-response:  48%|████▊     | 24/50 [00:02<00:03,  6.75it/s]    L25 low-response:  52%|█████▏    | 26/50 [00:02<00:02,  8.02it/s]    L25 low-response:  56%|█████▌    | 28/50 [00:03<00:02,  8.69it/s]    L25 low-response:  60%|██████    | 30/50 [00:03<00:02,  9.57it/s]    L25 low-response:  64%|██████▍   | 32/50 [00:03<00:01, 10.32it/s]    L25 low-response:  68%|██████▊   | 34/50 [00:03<00:01, 11.38it/s]    L25 low-response:  72%|███████▏  | 36/50 [00:03<00:01, 12.71it/s]    L25 low-response:  76%|███████▌  | 38/50 [00:03<00:01, 11.86it/s]    L25 low-response:  80%|████████  | 40/50 [00:03<00:00, 11.40it/s]    L25 low-response:  84%|████████▍ | 42/50 [00:04<00:00, 12.40it/s]    L25 low-response:  88%|████████▊ | 44/50 [00:04<00:00, 11.68it/s]    L25 low-response:  92%|█████████▏| 46/50 [00:04<00:00,  8.36it/s]    L25 low-response:  96%|█████████▌| 48/50 [00:04<00:00,  8.56it/s]    L25 low-response: 100%|██████████| 50/50 [00:05<00:00,  7.95it/s]                                                                         Layer 25 SV norm (reversed): 104.8988  (50 pos, 50 neg)
+    Layer 26: 0 high-score responses + 50 reference answers (positives) | 50 low-score responses (negatives)
+    L26 high-response: 0it [00:00, ?it/s]                                             L26 reference:   0%|          | 0/50 [00:00<?, ?it/s]    L26 reference:   2%|▏         | 1/50 [00:00<00:06,  7.61it/s]    L26 reference:   4%|▍         | 2/50 [00:00<00:07,  6.68it/s]    L26 reference:   6%|▌         | 3/50 [00:00<00:06,  7.43it/s]    L26 reference:  10%|█         | 5/50 [00:00<00:04,  9.20it/s]    L26 reference:  12%|█▏        | 6/50 [00:00<00:04,  9.38it/s]    L26 reference:  14%|█▍        | 7/50 [00:00<00:04,  9.02it/s]    L26 reference:  16%|█▌        | 8/50 [00:00<00:04,  8.84it/s]    L26 reference:  18%|█▊        | 9/50 [00:01<00:04,  8.83it/s]    L26 reference:  20%|██        | 10/50 [00:01<00:04,  8.77it/s]    L26 reference:  24%|██▍       | 12/50 [00:01<00:03, 10.85it/s]    L26 reference:  28%|██▊       | 14/50 [00:01<00:02, 12.38it/s]    L26 reference:  32%|███▏      | 16/50 [00:01<00:02, 13.43it/s]    L26 reference:  36%|███▌      | 18/50 [00:01<00:02, 13.70it/s]    L26 reference:  40%|████      | 20/50 [00:01<00:02, 13.75it/s]    L26 reference:  44%|████▍     | 22/50 [00:01<00:02, 13.87it/s]    L26 reference:  48%|████▊     | 24/50 [00:02<00:01, 15.12it/s]    L26 reference:  52%|█████▏    | 26/50 [00:02<00:01, 14.99it/s]    L26 reference:  56%|█████▌    | 28/50 [00:02<00:01, 14.43it/s]    L26 reference:  60%|██████    | 30/50 [00:02<00:01, 11.29it/s]    L26 reference:  64%|██████▍   | 32/50 [00:02<00:01, 11.77it/s]    L26 reference:  68%|██████▊   | 34/50 [00:02<00:01, 12.81it/s]    L26 reference:  72%|███████▏  | 36/50 [00:03<00:01, 13.22it/s]    L26 reference:  76%|███████▌  | 38/50 [00:03<00:00, 12.17it/s]    L26 reference:  80%|████████  | 40/50 [00:03<00:00, 12.08it/s]    L26 reference:  84%|████████▍ | 42/50 [00:03<00:00, 12.84it/s]    L26 reference:  88%|████████▊ | 44/50 [00:03<00:00, 13.56it/s]    L26 reference:  92%|█████████▏| 46/50 [00:03<00:00, 13.79it/s]    L26 reference:  96%|█████████▌| 48/50 [00:03<00:00, 13.04it/s]    L26 reference: 100%|██████████| 50/50 [00:04<00:00, 13.27it/s]                                                                      L26 low-response:   0%|          | 0/50 [00:00<?, ?it/s]    L26 low-response:   4%|▍         | 2/50 [00:00<00:03, 13.38it/s]    L26 low-response:   8%|▊         | 4/50 [00:00<00:03, 14.61it/s]    L26 low-response:  12%|█▏        | 6/50 [00:00<00:03, 14.66it/s]    L26 low-response:  16%|█▌        | 8/50 [00:00<00:02, 15.13it/s]    L26 low-response:  20%|██        | 10/50 [00:00<00:02, 14.89it/s]    L26 low-response:  24%|██▍       | 12/50 [00:00<00:02, 13.80it/s]    L26 low-response:  28%|██▊       | 14/50 [00:00<00:02, 14.60it/s]    L26 low-response:  32%|███▏      | 16/50 [00:01<00:02, 15.49it/s]    L26 low-response:  36%|███▌      | 18/50 [00:01<00:01, 16.36it/s]    L26 low-response:  40%|████      | 20/50 [00:02<00:06,  4.62it/s]    L26 low-response:  44%|████▍     | 22/50 [00:02<00:04,  5.61it/s]    L26 low-response:  48%|████▊     | 24/50 [00:02<00:03,  6.82it/s]    L26 low-response:  52%|█████▏    | 26/50 [00:02<00:02,  8.15it/s]    L26 low-response:  56%|█████▌    | 28/50 [00:02<00:02,  8.94it/s]    L26 low-response:  60%|██████    | 30/50 [00:03<00:02,  9.93it/s]    L26 low-response:  64%|██████▍   | 32/50 [00:03<00:01, 10.68it/s]    L26 low-response:  68%|██████▊   | 34/50 [00:03<00:01, 11.72it/s]    L26 low-response:  72%|███████▏  | 36/50 [00:03<00:01, 12.93it/s]    L26 low-response:  76%|███████▌  | 38/50 [00:03<00:01, 11.99it/s]    L26 low-response:  80%|████████  | 40/50 [00:03<00:00, 11.48it/s]    L26 low-response:  84%|████████▍ | 42/50 [00:04<00:00, 12.47it/s]    L26 low-response:  88%|████████▊ | 44/50 [00:04<00:00, 11.75it/s]    L26 low-response:  92%|█████████▏| 46/50 [00:04<00:00,  8.47it/s]    L26 low-response:  96%|█████████▌| 48/50 [00:04<00:00,  8.95it/s]    L26 low-response: 100%|██████████| 50/50 [00:05<00:00,  8.18it/s]                                                                         Layer 26 SV norm (reversed): 117.9479  (50 pos, 50 neg)
+    Layer 27: 0 high-score responses + 50 reference answers (positives) | 50 low-score responses (negatives)
+    L27 high-response: 0it [00:00, ?it/s]                                             L27 reference:   0%|          | 0/50 [00:00<?, ?it/s]    L27 reference:   2%|▏         | 1/50 [00:00<00:05,  8.84it/s]    L27 reference:   4%|▍         | 2/50 [00:00<00:07,  6.17it/s]    L27 reference:   6%|▌         | 3/50 [00:00<00:06,  6.97it/s]    L27 reference:  10%|█         | 5/50 [00:00<00:04,  9.16it/s]    L27 reference:  14%|█▍        | 7/50 [00:00<00:04,  9.45it/s]    L27 reference:  16%|█▌        | 8/50 [00:00<00:04,  9.18it/s]    L27 reference:  18%|█▊        | 9/50 [00:01<00:04,  9.13it/s]    L27 reference:  20%|██        | 10/50 [00:01<00:04,  8.99it/s]    L27 reference:  24%|██▍       | 12/50 [00:01<00:03, 10.90it/s]    L27 reference:  28%|██▊       | 14/50 [00:01<00:02, 12.39it/s]    L27 reference:  32%|███▏      | 16/50 [00:01<00:02, 13.43it/s]    L27 reference:  36%|███▌      | 18/50 [00:01<00:02, 13.77it/s]    L27 reference:  40%|████      | 20/50 [00:01<00:02, 13.69it/s]    L27 reference:  44%|████▍     | 22/50 [00:01<00:02, 13.91it/s]    L27 reference:  48%|████▊     | 24/50 [00:02<00:01, 15.14it/s]    L27 reference:  52%|█████▏    | 26/50 [00:02<00:01, 15.10it/s]    L27 reference:  56%|█████▌    | 28/50 [00:02<00:01, 14.43it/s]    L27 reference:  60%|██████    | 30/50 [00:02<00:01, 11.98it/s]    L27 reference:  64%|██████▍   | 32/50 [00:02<00:01, 12.00it/s]    L27 reference:  68%|██████▊   | 34/50 [00:02<00:01, 12.87it/s]    L27 reference:  72%|███████▏  | 36/50 [00:03<00:01, 13.18it/s]    L27 reference:  76%|███████▌  | 38/50 [00:03<00:00, 12.59it/s]    L27 reference:  80%|████████  | 40/50 [00:03<00:00, 12.43it/s]    L27 reference:  84%|████████▍ | 42/50 [00:03<00:00, 13.26it/s]    L27 reference:  88%|████████▊ | 44/50 [00:03<00:00, 13.64it/s]    L27 reference:  92%|█████████▏| 46/50 [00:03<00:00, 13.79it/s]    L27 reference:  96%|█████████▌| 48/50 [00:03<00:00, 13.09it/s]    L27 reference: 100%|██████████| 50/50 [00:04<00:00, 13.21it/s]                                                                      L27 low-response:   0%|          | 0/50 [00:00<?, ?it/s]    L27 low-response:   4%|▍         | 2/50 [00:00<00:03, 13.14it/s]    L27 low-response:   8%|▊         | 4/50 [00:00<00:03, 14.38it/s]    L27 low-response:  12%|█▏        | 6/50 [00:00<00:03, 14.64it/s]    L27 low-response:  16%|█▌        | 8/50 [00:00<00:02, 15.14it/s]    L27 low-response:  20%|██        | 10/50 [00:00<00:02, 15.64it/s]    L27 low-response:  24%|██▍       | 12/50 [00:00<00:02, 14.00it/s]    L27 low-response:  28%|██▊       | 14/50 [00:00<00:02, 14.75it/s]    L27 low-response:  32%|███▏      | 16/50 [00:01<00:02, 15.72it/s]    L27 low-response:  36%|███▌      | 18/50 [00:01<00:01, 16.48it/s]    L27 low-response:  40%|████      | 20/50 [00:02<00:06,  4.58it/s]    L27 low-response:  44%|████▍     | 22/50 [00:02<00:05,  5.55it/s]    L27 low-response:  48%|████▊     | 24/50 [00:02<00:03,  6.77it/s]    L27 low-response:  52%|█████▏    | 26/50 [00:02<00:02,  8.14it/s]    L27 low-response:  56%|█████▌    | 28/50 [00:02<00:02,  9.10it/s]    L27 low-response:  60%|██████    | 30/50 [00:03<00:02,  9.95it/s]    L27 low-response:  64%|██████▍   | 32/50 [00:03<00:01, 10.40it/s]    L27 low-response:  68%|██████▊   | 34/50 [00:03<00:01, 11.48it/s]    L27 low-response:  72%|███████▏  | 36/50 [00:03<00:01, 12.80it/s]    L27 low-response:  76%|███████▌  | 38/50 [00:03<00:01, 11.90it/s]    L27 low-response:  80%|████████  | 40/50 [00:03<00:00, 11.43it/s]    L27 low-response:  84%|████████▍ | 42/50 [00:04<00:00, 12.46it/s]    L27 low-response:  88%|████████▊ | 44/50 [00:04<00:00, 11.74it/s]    L27 low-response:  92%|█████████▏| 46/50 [00:04<00:00,  8.42it/s]    L27 low-response:  96%|█████████▌| 48/50 [00:04<00:00,  8.92it/s]    L27 low-response: 100%|██████████| 50/50 [00:05<00:00,  8.16it/s]                                                                         Layer 27 SV norm (reversed): 124.6276  (50 pos, 50 neg)
+    Layer 21: 0 high-score responses + 50 reference answers (positives) | 50 low-score responses (negatives)
+    L21 high-response: 0it [00:00, ?it/s]                                             L21 reference:   0%|          | 0/50 [00:00<?, ?it/s]    L21 reference:   2%|▏         | 1/50 [00:00<00:05,  9.00it/s]    L21 reference:   4%|▍         | 2/50 [00:00<00:06,  7.88it/s]    L21 reference:   6%|▌         | 3/50 [00:00<00:05,  7.98it/s]    L21 reference:  10%|█         | 5/50 [00:00<00:04,  9.50it/s]    L21 reference:  12%|█▏        | 6/50 [00:00<00:04,  9.53it/s]    L21 reference:  14%|█▍        | 7/50 [00:00<00:04,  9.31it/s]    L21 reference:  16%|█▌        | 8/50 [00:00<00:04,  8.70it/s]    L21 reference:  18%|█▊        | 9/50 [00:01<00:04,  8.47it/s]    L21 reference:  20%|██        | 10/50 [00:01<00:04,  8.46it/s]    L21 reference:  24%|██▍       | 12/50 [00:01<00:03, 10.65it/s]    L21 reference:  28%|██▊       | 14/50 [00:01<00:02, 12.28it/s]    L21 reference:  32%|███▏      | 16/50 [00:01<00:02, 13.25it/s]    L21 reference:  36%|███▌      | 18/50 [00:01<00:02, 13.59it/s]    L21 reference:  40%|████      | 20/50 [00:01<00:02, 13.65it/s]    L21 reference:  44%|████▍     | 22/50 [00:01<00:02, 13.91it/s]    L21 reference:  48%|████▊     | 24/50 [00:02<00:01, 15.15it/s]    L21 reference:  52%|█████▏    | 26/50 [00:02<00:01, 15.04it/s]    L21 reference:  56%|█████▌    | 28/50 [00:02<00:01, 14.32it/s]    L21 reference:  60%|██████    | 30/50 [00:02<00:01, 12.48it/s]    L21 reference:  64%|██████▍   | 32/50 [00:02<00:01, 12.15it/s]    L21 reference:  68%|██████▊   | 34/50 [00:02<00:01, 13.06it/s]    L21 reference:  72%|███████▏  | 36/50 [00:03<00:01, 13.08it/s]    L21 reference:  76%|███████▌  | 38/50 [00:03<00:00, 12.58it/s]    L21 reference:  80%|████████  | 40/50 [00:03<00:00, 12.69it/s]    L21 reference:  84%|████████▍ | 42/50 [00:03<00:00, 13.48it/s]    L21 reference:  88%|████████▊ | 44/50 [00:03<00:00, 13.84it/s]    L21 reference:  92%|█████████▏| 46/50 [00:03<00:00, 13.47it/s]    L21 reference:  96%|█████████▌| 48/50 [00:03<00:00, 13.07it/s]    L21 reference: 100%|██████████| 50/50 [00:04<00:00, 13.16it/s]                                                                      L21 low-response:   0%|          | 0/50 [00:00<?, ?it/s]    L21 low-response:   4%|▍         | 2/50 [00:00<00:04, 11.74it/s]    L21 low-response:   8%|▊         | 4/50 [00:00<00:03, 13.76it/s]    L21 low-response:  12%|█▏        | 6/50 [00:00<00:03, 14.17it/s]    L21 low-response:  16%|█▌        | 8/50 [00:00<00:02, 14.81it/s]    L21 low-response:  20%|██        | 10/50 [00:00<00:02, 15.43it/s]    L21 low-response:  24%|██▍       | 12/50 [00:00<00:02, 14.10it/s]    L21 low-response:  28%|██▊       | 14/50 [00:00<00:02, 14.30it/s]    L21 low-response:  32%|███▏      | 16/50 [00:01<00:02, 15.26it/s]    L21 low-response:  36%|███▌      | 18/50 [00:01<00:01, 16.20it/s]    L21 low-response:  40%|████      | 20/50 [00:02<00:06,  4.63it/s]    L21 low-response:  44%|████▍     | 22/50 [00:02<00:04,  5.65it/s]    L21 low-response:  48%|████▊     | 24/50 [00:02<00:03,  6.83it/s]    L21 low-response:  52%|█████▏    | 26/50 [00:02<00:02,  8.21it/s]    L21 low-response:  56%|█████▌    | 28/50 [00:02<00:02,  9.17it/s]    L21 low-response:  60%|██████    | 30/50 [00:03<00:02,  9.92it/s]    L21 low-response:  64%|██████▍   | 32/50 [00:03<00:01, 10.03it/s]    L21 low-response:  68%|██████▊   | 34/50 [00:03<00:01, 11.13it/s]    L21 low-response:  72%|███████▏  | 36/50 [00:03<00:01, 12.52it/s]    L21 low-response:  76%|███████▌  | 38/50 [00:03<00:01, 11.74it/s]    L21 low-response:  80%|████████  | 40/50 [00:03<00:00, 11.32it/s]    L21 low-response:  84%|████████▍ | 42/50 [00:04<00:00, 12.36it/s]    L21 low-response:  88%|████████▊ | 44/50 [00:04<00:00, 11.66it/s]    L21 low-response:  92%|█████████▏| 46/50 [00:04<00:00,  8.20it/s]    L21 low-response:  96%|█████████▌| 48/50 [00:04<00:00,  8.70it/s]    L21 low-response: 100%|██████████| 50/50 [00:05<00:00,  7.97it/s]                                                                         Layer 21 SV norm (reversed): 50.0237  (50 pos, 50 neg)
+    Layer 24: 0 high-score responses + 50 reference answers (positives) | 50 low-score responses (negatives)
+    L24 high-response: 0it [00:00, ?it/s]                                             L24 reference:   0%|          | 0/50 [00:00<?, ?it/s]    L24 reference:   2%|▏         | 1/50 [00:00<00:05,  9.79it/s]    L24 reference:   4%|▍         | 2/50 [00:00<00:05,  9.23it/s]    L24 reference:   6%|▌         | 3/50 [00:00<00:05,  8.93it/s]    L24 reference:  10%|█         | 5/50 [00:00<00:04, 10.44it/s]    L24 reference:  14%|█▍        | 7/50 [00:00<00:04, 10.14it/s]    L24 reference:  18%|█▊        | 9/50 [00:00<00:04,  9.41it/s]    L24 reference:  20%|██        | 10/50 [00:01<00:04,  9.08it/s]    L24 reference:  24%|██▍       | 12/50 [00:01<00:03, 10.63it/s]    L24 reference:  28%|██▊       | 14/50 [00:01<00:02, 12.06it/s]    L24 reference:  32%|███▏      | 16/50 [00:01<00:02, 13.11it/s]    L24 reference:  36%|███▌      | 18/50 [00:01<00:02, 13.44it/s]    L24 reference:  40%|████      | 20/50 [00:01<00:02, 13.56it/s]    L24 reference:  44%|████▍     | 22/50 [00:01<00:02, 13.84it/s]    L24 reference:  48%|████▊     | 24/50 [00:01<00:01, 15.06it/s]    L24 reference:  52%|█████▏    | 26/50 [00:02<00:01, 15.06it/s]    L24 reference:  56%|█████▌    | 28/50 [00:02<00:01, 14.46it/s]    L24 reference:  60%|██████    | 30/50 [00:02<00:01, 12.17it/s]    L24 reference:  64%|██████▍   | 32/50 [00:02<00:01, 11.55it/s]    L24 reference:  68%|██████▊   | 34/50 [00:02<00:01, 12.67it/s]    L24 reference:  72%|███████▏  | 36/50 [00:02<00:01, 12.67it/s]    L24 reference:  76%|███████▌  | 38/50 [00:03<00:00, 12.28it/s]    L24 reference:  80%|████████  | 40/50 [00:03<00:00, 12.51it/s]    L24 reference:  84%|████████▍ | 42/50 [00:03<00:00, 13.38it/s]    L24 reference:  88%|████████▊ | 44/50 [00:03<00:00, 13.75it/s]    L24 reference:  92%|█████████▏| 46/50 [00:03<00:00, 13.82it/s]    L24 reference:  96%|█████████▌| 48/50 [00:03<00:00, 13.40it/s]    L24 reference: 100%|██████████| 50/50 [00:04<00:00, 13.39it/s]                                                                      L24 low-response:   0%|          | 0/50 [00:00<?, ?it/s]    L24 low-response:   4%|▍         | 2/50 [00:00<00:04, 11.38it/s]    L24 low-response:   8%|▊         | 4/50 [00:00<00:03, 12.95it/s]    L24 low-response:  12%|█▏        | 6/50 [00:00<00:03, 13.80it/s]    L24 low-response:  16%|█▌        | 8/50 [00:00<00:02, 14.57it/s]    L24 low-response:  20%|██        | 10/50 [00:00<00:02, 15.27it/s]    L24 low-response:  24%|██▍       | 12/50 [00:00<00:02, 14.38it/s]    L24 low-response:  28%|██▊       | 14/50 [00:00<00:02, 14.28it/s]    L24 low-response:  32%|███▏      | 16/50 [00:01<00:02, 15.35it/s]    L24 low-response:  36%|███▌      | 18/50 [00:01<00:01, 16.06it/s]    L24 low-response:  40%|████      | 20/50 [00:02<00:06,  4.60it/s]    L24 low-response:  44%|████▍     | 22/50 [00:02<00:04,  5.61it/s]    L24 low-response:  48%|████▊     | 24/50 [00:02<00:03,  6.82it/s]    L24 low-response:  52%|█████▏    | 26/50 [00:02<00:02,  8.14it/s]    L24 low-response:  56%|█████▌    | 28/50 [00:02<00:02,  9.04it/s]    L24 low-response:  60%|██████    | 30/50 [00:03<00:02,  9.50it/s]    L24 low-response:  64%|██████▍   | 32/50 [00:03<00:01, 10.08it/s]    L24 low-response:  68%|██████▊   | 34/50 [00:03<00:01, 11.14it/s]    L24 low-response:  72%|███████▏  | 36/50 [00:03<00:01, 12.54it/s]    L24 low-response:  76%|███████▌  | 38/50 [00:03<00:01, 11.75it/s]    L24 low-response:  80%|████████  | 40/50 [00:03<00:00, 11.31it/s]    L24 low-response:  84%|████████▍ | 42/50 [00:04<00:00, 12.37it/s]    L24 low-response:  88%|████████▊ | 44/50 [00:04<00:00, 11.64it/s]    L24 low-response:  92%|█████████▏| 46/50 [00:04<00:00,  8.26it/s]    L24 low-response:  96%|█████████▌| 48/50 [00:04<00:00,  8.74it/s]    L24 low-response: 100%|██████████| 50/50 [00:05<00:00,  8.11it/s]                                                                         Layer 24 SV norm (reversed): 97.5685  (50 pos, 50 neg)
+
+Generating responses for 50 samples...
+Generating:   0%|          | 0/50 [00:00<?, ?it/s][transformers] The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:   2%|▏         | 1/50 [02:28<2:01:30, 148.79s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:   4%|▍         | 2/50 [02:30<49:51, 62.32s/it]   [transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:   6%|▌         | 3/50 [04:30<1:09:14, 88.40s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:   8%|▊         | 4/50 [06:57<1:25:47, 111.90s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  10%|█         | 5/50 [09:26<1:33:45, 125.02s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  12%|█▏        | 6/50 [11:55<1:37:41, 133.21s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  14%|█▍        | 7/50 [13:50<1:31:08, 127.17s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  16%|█▌        | 8/50 [15:44<1:26:11, 123.13s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  18%|█▊        | 9/50 [18:12<1:29:25, 130.86s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  20%|██        | 10/50 [19:16<1:13:32, 110.32s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  22%|██▏       | 11/50 [20:43<1:07:05, 103.23s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  24%|██▍       | 12/50 [23:11<1:14:01, 116.88s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [0] cap=grounding            orig=4.0 | baseline_len=2472 steered_len=290
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [1] cap=grounding            orig=3.0 | baseline_len=5 steered_len=5
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [2] cap=grounding            orig=2.0 | baseline_len=980 steered_len=1527
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [3] cap=grounding            orig=4.0 | baseline_len=2229 steered_len=2494
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [4] cap=grounding            orig=2.0 | baseline_len=285 steered_len=283
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [5] cap=grounding            orig=3.0 | baseline_len=1092 steered_len=1263
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [6] cap=grounding            orig=4.0 | baseline_len=1088 steered_len=1977
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [7] cap=grounding            orig=4.0 | baseline_len=2046 steered_len=1212
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [8] cap=grounding            orig=2.0 | baseline_len=1736 steered_len=1972
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [9] cap=grounding            orig=1.0 | baseline_len=0 steered_len=1023
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [10] cap=grounding            orig=4.0 | baseline_len=859 steered_len=864
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [11] cap=grounding            orig=4.0 | baseline_len=2006 steered_len=2004
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  26%|██▌       | 13/50 [25:40<1:17:55, 126.37s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  28%|██▊       | 14/50 [28:08<1:19:43, 132.88s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  30%|███       | 15/50 [30:36<1:20:10, 137.43s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  32%|███▏      | 16/50 [31:30<1:03:40, 112.35s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  34%|███▍      | 17/50 [33:58<1:07:44, 123.15s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  36%|███▌      | 18/50 [36:26<1:09:41, 130.68s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  38%|███▊      | 19/50 [38:55<1:10:17, 136.05s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  40%|████      | 20/50 [41:18<1:09:06, 138.22s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  42%|████▏     | 21/50 [43:36<1:06:49, 138.26s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  44%|████▍     | 22/50 [46:05<1:06:01, 141.47s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  46%|████▌     | 23/50 [47:03<52:19, 116.28s/it]  [transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  48%|████▊     | 24/50 [49:10<51:45, 119.42s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [12] cap=grounding            orig=3.0 | baseline_len=1504 steered_len=1294
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [13] cap=grounding            orig=3.0 | baseline_len=1974 steered_len=1928
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [14] cap=grounding            orig=4.0 | baseline_len=2100 steered_len=1971
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [15] cap=grounding            orig=4.0 | baseline_len=602 steered_len=792
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [16] cap=grounding            orig=4.0 | baseline_len=1277 steered_len=1215
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [17] cap=grounding            orig=2.0 | baseline_len=2045 steered_len=2438
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [18] cap=grounding            orig=2.0 | baseline_len=1226 steered_len=1102
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [19] cap=grounding            orig=2.0 | baseline_len=2296 steered_len=1998
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [20] cap=grounding            orig=3.0 | baseline_len=1193 steered_len=1068
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [21] cap=grounding            orig=3.0 | baseline_len=2765 steered_len=292
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [22] cap=grounding            orig=2.0 | baseline_len=4 steered_len=1305
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [23] cap=grounding            orig=1.0 | baseline_len=1961 steered_len=286
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  50%|█████     | 25/50 [50:43<46:30, 111.61s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  52%|█████▏    | 26/50 [52:08<41:25, 103.57s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  54%|█████▍    | 27/50 [53:08<34:41, 90.51s/it] [transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  56%|█████▌    | 28/50 [55:37<39:36, 108.03s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  58%|█████▊    | 29/50 [57:37<39:08, 111.82s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  60%|██████    | 30/50 [1:00:06<40:59, 122.98s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  62%|██████▏   | 31/50 [1:01:46<36:43, 115.95s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  64%|██████▍   | 32/50 [1:02:51<30:10, 100.57s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  66%|██████▌   | 33/50 [1:04:51<30:12, 106.59s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  68%|██████▊   | 34/50 [1:06:48<29:15, 109.75s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  70%|███████   | 35/50 [1:08:37<27:20, 109.37s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  72%|███████▏  | 36/50 [1:11:07<28:22, 121.60s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [24] cap=grounding            orig=1.0 | baseline_len=1993 steered_len=282
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [25] cap=grounding            orig=2.0 | baseline_len=299 steered_len=1252
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [26] cap=grounding            orig=1.0 | baseline_len=601 steered_len=1160
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [27] cap=grounding            orig=4.0 | baseline_len=1036 steered_len=1199
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [28] cap=grounding            orig=4.0 | baseline_len=1215 steered_len=1547
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [29] cap=grounding            orig=1.0 | baseline_len=291 steered_len=292
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [30] cap=grounding            orig=3.0 | baseline_len=2235 steered_len=237
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [31] cap=grounding            orig=1.0 | baseline_len=2 steered_len=1310
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [32] cap=grounding            orig=1.0 | baseline_len=194 steered_len=300
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [33] cap=grounding            orig=1.0 | baseline_len=923 steered_len=1233
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [34] cap=grounding            orig=3.0 | baseline_len=783 steered_len=1084
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [35] cap=grounding            orig=2.0 | baseline_len=2606 steered_len=289
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  74%|███████▍  | 37/50 [1:13:36<28:07, 129.80s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  76%|███████▌  | 38/50 [1:16:06<27:10, 135.87s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  78%|███████▊  | 39/50 [1:17:37<22:26, 122.43s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  80%|████████  | 40/50 [1:18:32<17:02, 102.25s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  82%|████████▏ | 41/50 [1:20:34<16:12, 108.00s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  84%|████████▍ | 42/50 [1:22:04<13:40, 102.55s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  86%|████████▌ | 43/50 [1:23:09<10:40, 91.45s/it] [transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  88%|████████▊ | 44/50 [1:24:54<09:32, 95.45s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  90%|█████████ | 45/50 [1:27:23<09:18, 111.64s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  92%|█████████▏| 46/50 [1:28:31<06:33, 98.39s/it] [transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  94%|█████████▍| 47/50 [1:30:20<05:04, 101.53s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  96%|█████████▌| 48/50 [1:32:50<03:52, 116.16s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [36] cap=grounding            orig=3.0 | baseline_len=1674 steered_len=1007
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [37] cap=grounding            orig=4.0 | baseline_len=1207 steered_len=1014
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [38] cap=grounding            orig=3.0 | baseline_len=385 steered_len=1238
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [39] cap=grounding            orig=3.0 | baseline_len=390 steered_len=617
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [40] cap=grounding            orig=2.0 | baseline_len=923 steered_len=1156
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [41] cap=grounding            orig=1.0 | baseline_len=590 steered_len=1909
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [42] cap=grounding            orig=1.0 | baseline_len=5 steered_len=1195
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [43] cap=grounding            orig=4.0 | baseline_len=627 steered_len=1280
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [44] cap=grounding            orig=3.0 | baseline_len=1866 steered_len=1941
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [45] cap=grounding            orig=2.0 | baseline_len=44 steered_len=1327
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [46] cap=grounding            orig=1.0 | baseline_len=161 steered_len=287
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [47] cap=grounding            orig=1.0 | baseline_len=288 steered_len=306
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating:  98%|█████████▊| 49/50 [1:35:19<02:06, 126.15s/it][transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=512) and `max_length`(=8192) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+Generating: 100%|██████████| 50/50 [1:35:59<00:00, 100.07s/it]Generating: 100%|██████████| 50/50 [1:35:59<00:00, 115.18s/it]
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [48] cap=grounding            orig=1.0 | baseline_len=2466 steered_len=1888
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+Warning: No valid steering vectors, falling back to baseline
+Warning: Steering vector at layer 25 has large norm 104.88, skipping
+Warning: Steering vector at layer 26 has large norm 117.94, skipping
+Warning: Steering vector at layer 27 has large norm 124.62, skipping
+  [49] cap=grounding            orig=2.0 | baseline_len=481 steered_len=436
+
+Results CSV  → /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/grounding/reverse_steering_results_grounding.csv
+Summary JSON → /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/grounding/reverse_steering_summary_grounding.json
+
+=================================================================
+GENERATION COMPLETE
+Samples:        50
+Layers steered: [21, 24, 25, 26, 27]
+SV direction:   reversed (negative - positive)
+=================================================================

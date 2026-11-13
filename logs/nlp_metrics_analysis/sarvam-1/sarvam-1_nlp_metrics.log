@@ -1,0 +1,506 @@
+  [info] BERTScore: trying distilbert-base-uncased ... Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4454.73it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4159.53it/s]
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1782586839.546544 2989583 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1782586839.609591 2989583 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1782586840.934500 2989583 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Using default checkpoint 'bleurt-base-128' for sequence maximum length 128. You can use a bigger model for better results with e.g.: evaluate.load('bleurt', config_name='bleurt-large-512').
+OK → using model_type='distilbert-base-uncased'
+I0000 00:00:1782586843.782556 2989583 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9600 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:1a:00.0, compute capability: 7.5
+I0000 00:00:1782586843.785032 2989583 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 9324 MB memory:  -> device: 1, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:1b:00.0, compute capability: 7.5
+I0000 00:00:1782586843.787306 2989583 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:2 with 9610 MB memory:  -> device: 2, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:3d:00.0, compute capability: 7.5
+I0000 00:00:1782586843.789591 2989583 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:3 with 9610 MB memory:  -> device: 3, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:3e:00.0, compute capability: 7.5
+I0000 00:00:1782586843.791794 2989583 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:4 with 9610 MB memory:  -> device: 4, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:88:00.0, compute capability: 7.5
+I0000 00:00:1782586843.793933 2989583 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:5 with 9610 MB memory:  -> device: 5, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:89:00.0, compute capability: 7.5
+I0000 00:00:1782586843.796151 2989583 gpu_device.cc:2043] Created device /job:localhost/replica:0/task:0/device:GPU:6 with 9610 MB memory:  -> device: 6, name: NVIDIA GeForce RTX 2080 Ti, pci bus id: 0000:b1:00.0, compute capability: 7.5
+  [info] BLEURT ready via evaluate (name: bleurt)
+
+=================================================================
+NLP Metric Analysis — sarvam-1
+Output: /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics
+=================================================================
+
+Forward CSVs: 8
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/grounding/worst_layer_steering_results_grounding.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/instruction_following/worst_layer_steering_results_instruction_following.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/planning/worst_layer_steering_results_planning.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/reasoning/worst_layer_steering_results_reasoning.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/safety/worst_layer_steering_results_safety.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/theory_of_mind/worst_layer_steering_results_theory_of_mind.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/unified_sum/unified_sum_results.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/steering/unified_average/unified_average_results.csv
+Reverse CSVs: 8
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/grounding/reverse_steering_results_grounding.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/instruction_following/reverse_steering_results_instruction_following.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/planning/reverse_steering_results_planning.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/reasoning/reverse_steering_results_reasoning.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/safety/reverse_steering_results_safety.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/theory_of_mind/reverse_steering_results_theory_of_mind.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/unified_sum/unified_sum_results.csv
+  /mnt/storage/deeksha/interpsteer/sarvam-1/reverse_steering/unified_average/unified_average_results.csv
+
+Merging DataFrames...
+  Merged shape: (400, 35)
+  Merged CSV → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/merged_for_nlp.csv
+
+Computing NLP metrics (this may take a while)...
+  [BERTScore] 7 GPU(s) available — cuda:2 (10658 MB free), cuda:3 (10658 MB free), cuda:4 (10658 MB free), cuda:5 (10658 MB free), cuda:6 (10658 MB free), cuda:1 (10372 MB free), cuda:0 (1035 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4289.58it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3898.02it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3974.55it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3292.34it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3811.06it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4081.53it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4218.26it/s]
+  [BERTScore] 7 GPU(s) available — cuda:4 (9644 MB free), cuda:1 (9642 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3886.82it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4237.61it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3898.78it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4203.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4054.50it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4075.98it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3914.13it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9642 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3838.93it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3827.20it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4252.09it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4025.71it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4132.07it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3921.23it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4086.26it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3750.98it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3937.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3575.98it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3978.70it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3810.44it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3975.64it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3545.78it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4207.18it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4332.87it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3852.79it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3832.97it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3994.23it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3717.04it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4072.57it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4149.65it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3283.01it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3409.31it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4057.17it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3931.71it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3599.33it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3903.49it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3896.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3974.44it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3842.91it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3744.25it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3900.15it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3361.25it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3976.66it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4058.23it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3929.86it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4107.15it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4027.79it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3791.67it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3854.78it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4078.55it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3795.17it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3848.20it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3881.31it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3924.57it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4361.52it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4046.33it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3816.61it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3944.94it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3870.75it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3728.73it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3752.75it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4030.08it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3833.22it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4218.48it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3635.68it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3610.49it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3826.50it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3626.85it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3828.88it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3799.29it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3896.64it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3867.93it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4110.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3473.23it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4204.56it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3836.44it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3984.82it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3185.10it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3852.30it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3678.57it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4028.49it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3757.83it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3808.74it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3778.75it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3965.83it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4083.84it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3806.74it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3903.20it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3927.55it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3670.55it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3909.50it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3692.04it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4269.97it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3742.24it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3819.18it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3577.84it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3985.54it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4015.92it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3866.04it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3876.29it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3714.96it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4067.68it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4180.93it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3274.80it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4073.25it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3698.49it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3870.61it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4030.85it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4148.59it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3854.00it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3683.96it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4013.11it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3500.97it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4090.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3639.63it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3870.75it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3728.83it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3891.25it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4004.99it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4013.23it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4020.69it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3916.80it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3888.33it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4028.03it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4146.00it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3815.99it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4065.35it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3347.65it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3759.41it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3526.97it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3752.52it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3881.53it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3971.88it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3976.47it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3747.89it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3939.98it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4229.32it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3943.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3823.68it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3730.99it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3876.29it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3777.97it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3786.63it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3796.37it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3727.08it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3945.54it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4091.56it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3638.02it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4132.60it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3665.55it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4132.77it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3886.64it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3724.23it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3847.14it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3726.08it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4222.30it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3884.98it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3297.56it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4152.04it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3730.53it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3891.58it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4071.11it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3793.76it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3988.54it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4091.41it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3279.16it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3815.67it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3797.61it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3888.62it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3820.75it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3985.62it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4017.30it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3922.51it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3994.77it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3821.41it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3965.31it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3992.10it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3851.77it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4141.70it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3962.91it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3985.84it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4065.23it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3799.98it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4259.39it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3992.41it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4143.30it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3872.25it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3573.64it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3984.06it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3886.24it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4044.18it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3956.29it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3998.08it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4024.12it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3942.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4011.04it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4186.73it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3749.27it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4046.88it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4041.42it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4437.29it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4048.01it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 4038.54it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3616.31it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3955.99it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3871.78it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3863.15it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3825.84it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3834.13it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3625.44it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3904.95it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3741.91it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3578.79it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3711.02it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3839.64it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3801.19it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3817.65it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3146.85it/s]
+  [BERTScore] 7 GPU(s) available — cuda:1 (9640 MB free), cuda:2 (9640 MB free), cuda:3 (9640 MB free), cuda:4 (9640 MB free), cuda:5 (9640 MB free), cuda:6 (9640 MB free), cuda:0 (23 MB free)
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3745.38it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3828.70it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3807.29it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3758.17it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3756.99it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3778.65it/s]
+Loading weights:   0%|          | 0/100 [00:00<?, ?it/s]Loading weights: 100%|██████████| 100/100 [00:00<00:00, 3496.04it/s]
+
+Generating plots...
+  Saved → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/metrics_by_capability.png
+  Saved → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/metric_heatmap.png
+  Saved → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/fwd_vs_rev_direct.png
+  Saved → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/verdict_summary.png
+  Saved → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/ttr_comparison.png
+  Saved → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/metrics_by_exp_type.png
+
+  Report → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/nlp_metrics_report.txt
+
+======================================================================
+NLP METRICS REPORT — sarvam-1
+======================================================================
+Total samples analysed: 400
+
+── OVERALL ──────────────────────────────────────────────────────
+
+  Forward vs Baseline:
+    ROUGE-1 F1                    : 0.2640
+    ROUGE-2 F1                    : 0.1133
+    ROUGE-L F1                    : 0.2393
+    bleu_corpus                   : nan
+    bleu_sentence                 : 0.0052
+    BLEURT                        : -0.2385
+    bertscore_p                   : 0.8409
+    bertscore_r                   : 0.8516
+    BERTScore F1                  : 0.8440
+    Lexical Diversity (TTR)       : 0.5170
+
+  Reverse vs Baseline:
+    ROUGE-1 F1                    : 0.2767
+    ROUGE-2 F1                    : 0.1221
+    ROUGE-L F1                    : 0.2486
+    bleu_corpus                   : nan
+    bleu_sentence                 : 0.0055
+    BLEURT                        : -0.2250
+    bertscore_p                   : 0.8375
+    bertscore_r                   : 0.8494
+    BERTScore F1                  : 0.8414
+    Lexical Diversity (TTR)       : 0.4995
+
+  Forward vs Reverse (direct):
+    ROUGE-1 F1                    : 0.4157
+    ROUGE-2 F1                    : 0.2558
+    ROUGE-L F1                    : 0.3801
+    bleu_corpus                   : 0.3113
+    bleu_sentence                 : 0.3111
+    BLEURT                        : 0.2290
+    bertscore_p                   : 0.9142
+    bertscore_r                   : 0.9109
+    BERTScore F1                  : 0.9119
+    Lexical Diversity (TTR)       : 0.5170
+
+  ► Overall winner: TIE (4 each)
+
+── PER CAPABILITY ───────────────────────────────────────────────
+
+  Capability: ALL
+    BERTScore F1                    fwd=0.881  rev=0.867  ▶ FWD
+    bertscore_p                     fwd=0.881  rev=0.862  ▶ FWD
+    bertscore_r                     fwd=0.885  rev=0.875  ▶ FWD
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.021  rev=0.029  ▶ REV
+    BLEURT                          fwd=-0.106  rev=-0.151  ▶ FWD
+    ROUGE-1 F1                      fwd=0.358  rev=0.324  ▶ FWD
+    ROUGE-2 F1                      fwd=0.147  rev=0.164  ▶ REV
+    ROUGE-L F1                      fwd=0.333  rev=0.291  ▶ FWD
+    Lexical Diversity (TTR)         fwd=0.593  rev=0.520  ▶ FWD
+    → Capability winner: FORWARD steering (wins 7/10 metrics)
+
+  Capability: GROUNDING
+    BERTScore F1                    fwd=0.819  rev=0.819    TIE
+    bertscore_p                     fwd=0.816  rev=0.816    TIE
+    bertscore_r                     fwd=0.824  rev=0.824    TIE
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.009  rev=0.009    TIE
+    BLEURT                          fwd=-0.340  rev=-0.340    TIE
+    ROUGE-1 F1                      fwd=0.209  rev=0.209    TIE
+    ROUGE-2 F1                      fwd=0.079  rev=0.079    TIE
+    ROUGE-L F1                      fwd=0.180  rev=0.180    TIE
+    Lexical Diversity (TTR)         fwd=0.545  rev=0.545    TIE
+    → Capability winner: TIE (0 each)
+
+  Capability: INSTRUCTION_FOLLOWING
+    BERTScore F1                    fwd=0.848  rev=0.853  ▶ REV
+    bertscore_p                     fwd=0.843  rev=0.848  ▶ REV
+    bertscore_r                     fwd=0.855  rev=0.860  ▶ REV
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.058  rev=0.064  ▶ REV
+    BLEURT                          fwd=-0.218  rev=-0.172  ▶ REV
+    ROUGE-1 F1                      fwd=0.176  rev=0.239  ▶ REV
+    ROUGE-2 F1                      fwd=0.099  rev=0.132  ▶ REV
+    ROUGE-L F1                      fwd=0.156  rev=0.216  ▶ REV
+    Lexical Diversity (TTR)         fwd=0.521  rev=0.529  ▶ REV
+    → Capability winner: REVERSE steering (wins 9/10 metrics)
+
+  Capability: PLANNING
+    BERTScore F1                    fwd=0.812  rev=0.808  ▶ FWD
+    bertscore_p                     fwd=0.807  rev=0.808  ▶ REV
+    bertscore_r                     fwd=0.829  rev=0.813  ▶ FWD
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.001  rev=0.001    TIE
+    BLEURT                          fwd=-0.372  rev=-0.338  ▶ REV
+    ROUGE-1 F1                      fwd=0.249  rev=0.259  ▶ REV
+    ROUGE-2 F1                      fwd=0.191  rev=0.179  ▶ FWD
+    ROUGE-L F1                      fwd=0.230  rev=0.235  ▶ REV
+    Lexical Diversity (TTR)         fwd=0.453  rev=0.454  ▶ REV
+    → Capability winner: REVERSE steering (wins 5/10 metrics)
+
+  Capability: REASONING
+    BERTScore F1                    fwd=0.836  rev=0.834  ▶ FWD
+    bertscore_p                     fwd=0.833  rev=0.832    TIE
+    bertscore_r                     fwd=0.845  rev=0.841  ▶ FWD
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.025  rev=0.016  ▶ FWD
+    BLEURT                          fwd=-0.250  rev=-0.265  ▶ FWD
+    ROUGE-1 F1                      fwd=0.312  rev=0.303  ▶ FWD
+    ROUGE-2 F1                      fwd=0.113  rev=0.108  ▶ FWD
+    ROUGE-L F1                      fwd=0.271  rev=0.265  ▶ FWD
+    Lexical Diversity (TTR)         fwd=0.440  rev=0.430  ▶ FWD
+    → Capability winner: FORWARD steering (wins 8/10 metrics)
+
+  Capability: SAFETY
+    BERTScore F1                    fwd=0.825  rev=0.838  ▶ REV
+    bertscore_p                     fwd=0.819  rev=0.831  ▶ REV
+    bertscore_r                     fwd=0.835  rev=0.851  ▶ REV
+    bleu_corpus                     fwd=0.071  rev=0.074  ▶ REV
+    bleu_sentence                   fwd=0.110  rev=0.116  ▶ REV
+    BLEURT                          fwd=-0.239  rev=-0.173  ▶ REV
+    ROUGE-1 F1                      fwd=0.284  rev=0.346  ▶ REV
+    ROUGE-2 F1                      fwd=0.085  rev=0.115  ▶ REV
+    ROUGE-L F1                      fwd=0.266  rev=0.323  ▶ REV
+    Lexical Diversity (TTR)         fwd=0.555  rev=0.561  ▶ REV
+    → Capability winner: REVERSE steering (wins 10/10 metrics)
+
+  Capability: THEORY_OF_MIND
+    BERTScore F1                    fwd=0.848  rev=0.844  ▶ FWD
+    bertscore_p                     fwd=0.846  rev=0.838  ▶ FWD
+    bertscore_r                     fwd=0.855  rev=0.855    TIE
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.056  rev=0.081  ▶ REV
+    BLEURT                          fwd=-0.286  rev=-0.218  ▶ REV
+    ROUGE-1 F1                      fwd=0.164  rev=0.208  ▶ REV
+    ROUGE-2 F1                      fwd=0.050  rev=0.042  ▶ FWD
+    ROUGE-L F1                      fwd=0.144  rev=0.186  ▶ REV
+    Lexical Diversity (TTR)         fwd=0.436  rev=0.436    TIE
+    → Capability winner: REVERSE steering (wins 4/10 metrics)
+
+── PER EXPERIMENT TYPE ──────────────────────────────────────────
+
+  Exp type: per_cap
+    → Winner: REVERSE steering (wins 6/10 metrics)
+    BERTScore F1                    fwd=0.831  rev=0.833  ▶ REV
+    bertscore_p                     fwd=0.827  rev=0.829  ▶ REV
+    bertscore_r                     fwd=0.840  rev=0.841    TIE
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.005  rev=0.006    TIE
+    BLEURT                          fwd=-0.283  rev=-0.250  ▶ REV
+    ROUGE-1 F1                      fwd=0.232  rev=0.261  ▶ REV
+    ROUGE-2 F1                      fwd=0.102  rev=0.108  ▶ REV
+    ROUGE-L F1                      fwd=0.208  rev=0.234  ▶ REV
+    Lexical Diversity (TTR)         fwd=0.492  rev=0.493    TIE
+
+  Exp type: unified_average
+    → Winner: FORWARD steering (wins 7/10 metrics)
+    BERTScore F1                    fwd=0.881  rev=0.867  ▶ FWD
+    bertscore_p                     fwd=0.879  rev=0.863  ▶ FWD
+    bertscore_r                     fwd=0.886  rev=0.875  ▶ FWD
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.022  rev=0.028  ▶ REV
+    BLEURT                          fwd=-0.124  rev=-0.154  ▶ FWD
+    ROUGE-1 F1                      fwd=0.370  rev=0.311  ▶ FWD
+    ROUGE-2 F1                      fwd=0.155  rev=0.163  ▶ REV
+    ROUGE-L F1                      fwd=0.342  rev=0.276  ▶ FWD
+    Lexical Diversity (TTR)         fwd=0.599  rev=0.521  ▶ FWD
+
+  Exp type: unified_sum
+    → Winner: FORWARD steering (wins 7/10 metrics)
+    BERTScore F1                    fwd=0.882  rev=0.866  ▶ FWD
+    bertscore_p                     fwd=0.883  rev=0.861  ▶ FWD
+    bertscore_r                     fwd=0.884  rev=0.875  ▶ FWD
+    bleu_corpus                     fwd=nan  rev=nan    TIE
+    bleu_sentence                   fwd=0.020  rev=0.030  ▶ REV
+    BLEURT                          fwd=-0.088  rev=-0.148  ▶ FWD
+    ROUGE-1 F1                      fwd=0.347  rev=0.336  ▶ FWD
+    ROUGE-2 F1                      fwd=0.138  rev=0.164  ▶ REV
+    ROUGE-L F1                      fwd=0.323  rev=0.305  ▶ FWD
+    Lexical Diversity (TTR)         fwd=0.588  rev=0.519  ▶ FWD
+
+======================================================================
+END OF REPORT
+======================================================================
+  Summary JSON → /mnt/storage/deeksha/interpsteer/sarvam-1/analysis/nlp_metrics/nlp_summary.json

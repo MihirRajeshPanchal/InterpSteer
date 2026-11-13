@@ -1,0 +1,47 @@
+
+
+
+
+Probing -> Is to find layers of x model whether they are good at predicting a given score range (1-5)
+
+English
+    original_instruction
+    orig_response
+    orig_score
+    system_prompt
+
+Multilingual
+
+    translated_instruction
+    translated_response
+    orig_score
+    system_prompt
+
+
+Steering -> 
+
+system_prompt + translated_instruction + translated_reference_answer 
+system_prompt + translated_instruction + orig_response
+
+
+1 model (Bharatgpt) -> 6 capabilities (grounding, instruction following, reasoning, planning, theory of mind, safety)
+
+Percap : grounding -> 1,2,3,4,5 -> Steering vector at layer 1 , 
+        instruction follwoing -> 2,5,7,8,9 
+
+Unified layer 1 = grounding + instruction following (vector)
+sum /average
+
+todo : add few shot and run and add reference answer as well and see how it performs.
+
+
+
+Todo = 
+    1. Do negative of target - source se source - target and see how it performs.
+    2. See more papers on steering where codebase is available
+
+Index(['capability', 'task', 'system_prompt', 'input', 'reference_answer',
+       'score_rubric', 'orig_score', 'orig_response', 'orig_index', 'language',
+       'translated_system_prompt', 'translated_input',
+       'translated_reference_answer', 'translated_orig_response'],
+      dtype='object')
